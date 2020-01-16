@@ -5,7 +5,7 @@ services:
 before.install:
     - docker build -t phfldocker/react-test -f ./client/Dockerfile.dev ./client
 script:
-    - docker run -e CI=true USERNAME/react-test npm test
+    - docker run -e CI=true phfldocker/react-test npm test
 after_sucess:
     - docker build -t phfldocker/multi-client ./client 
     - docker build -t phfldocker/multi-nginx ./nginx
