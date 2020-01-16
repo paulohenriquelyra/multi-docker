@@ -7,15 +7,15 @@ before.install:
 script:
     - docker run -e CI=true paulo/react-test npm test
 after_sucess:
-    - docker build -t paulo/multi-client ./client 
-    - docker build -t paulo/multi-nginx ./nginx
-    - docker build -t paulo/multi-server ./server
-    - docker build -t paulo/multi-worker ./worker
+    - docker build -t paulolyra/multi-client ./client 
+    - docker build -t paulolyra/multi-nginx ./nginx
+    - docker build -t paulolyra/multi-server ./server
+    - docker build -t paulolyra/multi-worker ./worker
     # docker login
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
     # take this is image push to docker hub
-    - docker push paulo/multi-client
-    - docker push paulo/multi-nginx
-    - docker push paulo/multi-server
-    - docker push paulo/multi-worker
-    
+    - docker push paulolyra/multi-client
+    - docker push paulolyra/multi-nginx
+    - docker push paulolyra/multi-server
+    - docker push paulolyra/multi-worker
+
