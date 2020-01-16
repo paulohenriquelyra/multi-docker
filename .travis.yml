@@ -3,19 +3,19 @@ sudo: require
 services:
     - docker
 before.install:
-    - docker build -t paulo/react-test -f ./client/Dockerfile.dev ./client
+    - docker build -t phfldocker/react-test -f ./client/Dockerfile.dev ./client
 script:
-    - docker run -e CI=true paulo/react-test npm test
+    - docker run -e CI=true USERNAME/react-test npm test
 after_sucess:
-    - docker build -t paulolyra/multi-client ./client 
-    - docker build -t paulolyra/multi-nginx ./nginx
-    - docker build -t paulolyra/multi-server ./server
-    - docker build -t paulolyra/multi-worker ./worker
+    - docker build -t phfldocker/multi-client ./client 
+    - docker build -t phfldocker/multi-nginx ./nginx
+    - docker build -t phfldocker/multi-server ./server
+    - docker build -t phfldocker/multi-worker ./worker
     # docker login
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
     # take this is image push to docker hub
-    - docker push paulolyra/multi-client
-    - docker push paulolyra/multi-nginx
-    - docker push paulolyra/multi-server
-    - docker push paulolyra/multi-worker
+    - docker push phfldocker/multi-client
+    - docker push phfldocker/multi-nginx
+    - docker push phfldocker/multi-server
+    - docker push phfldocker/multi-worker
 
