@@ -18,4 +18,3 @@ after_sucess:
     - docker push phfldocker/multi-nginx
     - docker push phfldocker/multi-server
     - docker push phfldocker/multi-worker
-
